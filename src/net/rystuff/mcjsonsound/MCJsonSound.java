@@ -70,6 +70,7 @@ public class MCJsonSound
             System.out.println(Arrays.toString(dirs));
             System.out.println(Arrays.toString(names));
             writer.beginObject();
+            writer.setIndent("    ");
             for (String name : names)
             {
                 writer.name(name);
