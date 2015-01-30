@@ -146,9 +146,4 @@ public class MCJsonSound
             e.printStackTrace();
         }
     }
-
-    public static void json(String name, String path)
-    {
-
-    }
 }
