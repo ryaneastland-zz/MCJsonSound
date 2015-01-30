@@ -14,6 +14,7 @@ import java.util.List;
 
 public class MCJsonSound
 {
+    public static String modid;
     public static String directory;
     public static File file;
     public static String[] ext;
@@ -32,8 +33,9 @@ public class MCJsonSound
     {
         try
         {
-            writer = new JsonWriter(new FileWriter(args[1]));
-            directory = args[0];
+            modid = args[0];
+            writer = new JsonWriter(new FileWriter(args[2]));
+            directory = args[1];
             file = new File(directory);
             ext = new String[]{"ogg"};
             files = FileUtils.listFiles(file, ext, true);
@@ -73,7 +75,56 @@ public class MCJsonSound
             writer.setIndent("    ");
             for (String name : names)
             {
-                writer.name(name);
+                name = name.toLowerCase();
+                if (name.contains("living"))
+                {
+                    writer.name(modid + ":"  + name + ":"  + "living");
+                    writer.beginObject();
+                    writer.name("category").value("hostile");
+                    writer.name("sounds").beginArray();
+                    for (String dir : dirs)
+                    {
+                        if (dir.contains(name))
+                        {
+                            writer.value(dir);
+                        }
+                    }
+                    writer.endArray();
+                    writer.endObject();
+                }
+                if (name.contains("hurt"))
+                {
+                    writer.name(modid + ":"  + name + ":"  + "hurt");
+                    writer.beginObject();
+                    writer.name("category").value("hostile");
+                    writer.name("sounds").beginArray();
+                    for (String dir : dirs)
+                    {
+                        if (dir.contains(name))
+                        {
+                            writer.value(dir);
+                        }
+                    }
+                    writer.endArray();
+                    writer.endObject();
+                }
+                if (name.contains("death"))
+                {
+                    writer.name(modid + ":"  + name + ":"  + "death");
+                    writer.beginObject();
+                    writer.name("category").value("hostile");
+                    writer.name("sounds").beginArray();
+                    for (String dir : dirs)
+                    {
+                        if (dir.contains(name))
+                        {
+                            writer.value(dir);
+                        }
+                    }
+                    writer.endArray();
+                    writer.endObject();
+                }
+                writer.name(modid + ":"  + name);
                 writer.beginObject();
                 writer.name("category").value("hostile");
                 writer.name("sounds").beginArray();
