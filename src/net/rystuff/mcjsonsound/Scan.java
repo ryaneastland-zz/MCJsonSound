@@ -1,4 +1,4 @@
-package net.rystuff.mcjsonsound.gui;
+package net.rystuff.mcjsonsound;
 
 import com.google.gson.stream.JsonWriter;
 import org.apache.commons.io.FileUtils;

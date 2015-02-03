@@ -1,7 +1,6 @@
 package net.rystuff.mcjsonsound;
 
 import net.rystuff.mcjsonsound.gui.GuiMain;
-import net.rystuff.mcjsonsound.gui.Scan;
 
 import javax.swing.*;
 import java.awt.*;

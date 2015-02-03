@@ -1,5 +1,6 @@
 package net.rystuff.mcjsonsound.gui;
 
+import net.rystuff.mcjsonsound.Scan;
 import net.rystuff.mcjsonsound.swing.FileChooser;
 import net.rystuff.mcjsonsound.swing.FolderChooser;
 
