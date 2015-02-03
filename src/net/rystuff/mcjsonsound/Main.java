@@ -5,9 +5,10 @@ import net.rystuff.mcjsonsound.gui.GuiMain;
 import javax.swing.*;
 import java.awt.*;
 
-public class Main extends JFrame
+public class Main
 {
     public static Main instance;
+    public static JFrame frame;
     public static GuiMain guiMain;
     
     public Main(String[] args)
@@ -35,15 +36,16 @@ public class Main extends JFrame
                 e.printStackTrace();
             }
             instance = this;
-            guiMain = new GuiMain(this);
-            setTitle("MCJsonSound");
-            setSize(550, 200);
-            setResizable(false);
-            setLocationRelativeTo(null);
-            setLayout(new GridLayout(4, 1));
-            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            setContentPane(guiMain);
-            setVisible(true);
+            frame = new JFrame();
+            guiMain = new GuiMain(frame);
+            frame.setTitle("MCJsonSound");
+            frame.setSize(550, 200);
+            frame.setResizable(false);
+            frame.setLocationRelativeTo(null);
+            frame.setLayout(new GridLayout(4, 1));
+            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            frame.setContentPane(GuiMain.panel);
+            frame.setVisible(true);
         }
         if (args.length == 3)
         {

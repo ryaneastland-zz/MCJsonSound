@@ -19,9 +19,12 @@ public class GuiMain extends JPanel implements ActionListener
     
     public static FolderChooser assets;
     public static FileChooser json;
+
+    public static JPanel panel;
     
     public GuiMain(JFrame frame)
     {
+        panel = new JPanel();
         JPanel buttons = new JPanel();
         JPanel modids = new JPanel();
         setLayout(new GridLayout(4, 1));
@@ -31,12 +34,12 @@ public class GuiMain extends JPanel implements ActionListener
         json.setMode(FileChooser.MODE_SAVE);
         modids.add(modid);
         modids.add(modidText);
-        add(modids);
-        add(assets);
-        add(json);
+        panel.add(modids);
+        panel.add(assets);
+        panel.add(json);
         buttons.add(settings);
         buttons.add(generate);
-        add(buttons);
+        panel.add(buttons);
         settings.addActionListener(this);
         generate.addActionListener(this);
     }
