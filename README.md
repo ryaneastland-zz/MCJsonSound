@@ -4,9 +4,10 @@ MCJsonSound is a java program I have written to help all Minecraft Mod Developer
 
 Current Version
 ---------------
-Alpha 0.2
+Alpha 0.3
 
 Changelog
 ---------
-* Changed to using Gson
-* Organisation stuff for living, hurt and death sounds
+* Added gui
+* Run able from ever command line with args modid assetsDir jsonFile or via gui
+* Fix small things
