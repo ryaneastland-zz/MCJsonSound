@@ -33,11 +33,24 @@ public class GuiMain extends JPanel implements ActionListener
         buttons.add(settings);
         buttons.add(generate);
         add(buttons);
+        settings.addActionListener(this);
+        generate.addActionListener(this);
     }
     
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        
+        if (e.getSource() == settings)
+        {
+            GuiSettings frame = new GuiSettings();
+            frame.setSize(500, 500);
+            frame.setTitle("MCJsonSound Settings");
+            frame.setResizable(false);
+            frame.setVisible(true);
+        }
+        if (e.getSource() == generate)
+        {
+            
+        }
     }
 }

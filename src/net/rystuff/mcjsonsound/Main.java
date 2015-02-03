@@ -37,6 +37,7 @@ public class Main extends JFrame
         guiMain = new GuiMain(this);
         setTitle("MCJsonSound");
         setSize(550, 200);
+        setResizable(false);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(4, 1));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
