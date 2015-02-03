@@ -47,7 +47,7 @@ public class Main
             frame.setContentPane(GuiMain.panel);
             frame.setVisible(true);
         }
-        if (args.length == 3)
+        else if (args.length == 3)
         {
             new Scan(args[0], args[1], args[2]);
         }

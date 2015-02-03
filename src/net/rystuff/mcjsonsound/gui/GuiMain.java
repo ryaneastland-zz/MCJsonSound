@@ -57,14 +57,27 @@ public class GuiMain extends JPanel implements ActionListener
         }
         if (e.getSource() == generate)
         {
-            if (modidText.getText() != null ||  assets.getSelectedFilePath() != null || json.getSelectedFilePath() != null)
+            if (modidText.getText().equals("") || assets.getSelectedFilePath().equals("") || json.getSelectedFilePath().equals(""))
+            {
+                if (modidText.getText().equals(""))
+                {
+                    System.out.println("ModID NOT Specified!");
+                }
+                if (assets.getSelectedFilePath().equals(""))
+                {
+                    System.out.println("Assets Directory NOT Specified!");
+                }
+                if (json.getSelectedFilePath().equals(""))
+                {
+                    System.out.println("Json File NOT Specified!");
+                }
+            }
+            else
             {
                 generate.setEnabled(false);
                 new Scan(modidText.getText(), assets.getSelectedFilePath(), json.getSelectedFilePath());
                 generate.setEnabled(true);
             }
-            else 
-                System.out.println("Invalid modid, assets dir or json file!");
         }
     }
 }
