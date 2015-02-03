@@ -1,4 +1,4 @@
-package net.rystuff.mcjsonsound;
+package net.rystuff.mcjsonsound.gui;
 
 import com.google.gson.stream.JsonWriter;
 import org.apache.commons.io.FileUtils;
@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public class MCJsonSound
+public class Scan
 {
     public static String modid;
     public static String directory;
@@ -28,14 +28,14 @@ public class MCJsonSound
     public static String lastName = null;
     public static JsonWriter writer;
     public static int testing;
-
-    public static void main(String[] args)
+    
+    public Scan(String modid, String sounds, String json)
     {
         try
         {
-            modid = args[0];
-            writer = new JsonWriter(new FileWriter(args[2]));
-            directory = args[1];
+            Scan.modid = modid;
+            writer = new JsonWriter(new FileWriter(json));
+            directory = sounds;
             file = new File(directory);
             ext = new String[]{"ogg"};
             files = FileUtils.listFiles(file, ext, true);
@@ -144,6 +144,6 @@ public class MCJsonSound
         catch (IOException e)
         {
             e.printStackTrace();
-        }
+        }        
     }
 }

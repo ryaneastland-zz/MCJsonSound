@@ -16,13 +16,16 @@ public class GuiMain extends JPanel implements ActionListener
     public static JTextField modidText = new JTextField(30);
     public static JLabel modid = new JLabel("ModID");
     
+    public static FolderChooser assets;
+    public static FileChooser json;
+    
     public GuiMain(JFrame frame)
     {
         JPanel buttons = new JPanel();
         JPanel modids = new JPanel();
         setLayout(new GridLayout(4, 1));
-        FolderChooser assets = new FolderChooser("Select Assets Dir", "Browse...");
-        FileChooser json = new FileChooser("Output json file", "Browse...");
+        assets = new FolderChooser("Select Assets Dir", "Browse...");
+        json = new FileChooser("Output json file", "Browse...");
         json.addFileTypeFilter(".json", "json Files");
         json.setMode(FileChooser.MODE_SAVE);
         modids.add(modid);
@@ -50,7 +53,14 @@ public class GuiMain extends JPanel implements ActionListener
         }
         if (e.getSource() == generate)
         {
-            
+            if (modidText.getText() != null ||  assets.getSelectedFilePath() != null || json.getSelectedFilePath() != null)
+            {
+                generate.setEnabled(false);
+                new Scan(modidText.getText(), assets.getSelectedFilePath(), json.getSelectedFilePath());
+                generate.setEnabled(true);
+            }
+            else 
+                System.out.println("Invalid modid, assets dir or json file!");
         }
     }
 }
