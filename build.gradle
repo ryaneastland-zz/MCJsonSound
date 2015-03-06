@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+configurations {
+    provided
+    provided.extendsFrom(compile)
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    provided 'commons-io:commons-io:2.4'
+    provided 'org.apache.commons:commons-lang3:3.3.2'
+    provided 'com.google.code.gson:gson:2.3.1'
+}
+idea {
+    module {
+        name = 'MCJsonSound'
+        scopes.PROVIDED.plus += [ configurations.provided ]
+        downloadJavadoc = true
+        downloadSources = false
+    }
+}
