@@ -4,6 +4,7 @@ import net.rystuff.mcjsonsound.gui.GuiMain;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Main
 {
@@ -37,7 +38,14 @@ public class Main
         }
         else if (args.length == 3)
         {
-            new Scan(args[0], args[1], args[2]);
+            try
+            {
+                new NewScan(args[0], args[1], args[2]);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
         else
         {

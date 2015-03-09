@@ -1,6 +1,6 @@
 package net.rystuff.mcjsonsound.gui;
 
-import net.rystuff.mcjsonsound.Scan;
+import net.rystuff.mcjsonsound.NewScan;
 import net.rystuff.mcjsonsound.swing.FileChooser;
 import net.rystuff.mcjsonsound.swing.FolderChooser;
 
@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class GuiMain extends JPanel implements ActionListener
 {
@@ -75,7 +76,14 @@ public class GuiMain extends JPanel implements ActionListener
             else
             {
                 generate.setEnabled(false);
-                new Scan(modidText.getText(), assets.getSelectedFilePath(), json.getSelectedFilePath());
+                try
+                {
+                    new NewScan(modidText.getText(), assets.getSelectedFilePath(), json.getSelectedFilePath());
+                }
+                catch (IOException e1)
+                {
+                    e1.printStackTrace();
+                }
                 generate.setEnabled(true);
             }
         }
