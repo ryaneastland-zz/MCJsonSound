@@ -14,9 +14,9 @@ repositories
 
 dependencies
 {
-    provided 'commons-io:commons-io:2.4'
-    provided 'org.apache.commons:commons-lang3:3.3.2'
-    provided 'com.google.code.gson:gson:2.3.1'
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'com.google.code.gson:gson:2.3.1'
 }
 
 idea
