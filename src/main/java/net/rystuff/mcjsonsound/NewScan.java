@@ -120,93 +120,66 @@ public class NewScan
         // for all dirs
         for (String dir : stringDirs)
         {
-            // if dir split length greater than or equal to 2
-            if (dir.split("/").length >= 2)
+            // Set name to second part of dir split
+            name = dir.split("/")[1];
+            if (dir.toLowerCase().contains("living") && !name.equals(lastLiving))
             {
-                // Set name to second part of dir split
-                name = dir.split("/")[1];
-                if (dir.toLowerCase().contains("living") && !name.equals(lastLiving))
+                writer.name(modid + ":" + name + ":" + "living");
+                writer.beginObject();
+                writer.name("category").value("hostile");
+                writer.name("sounds").beginArray();
+                for (String dir1 : dirs)
                 {
-                    writer.name(modid + ":" + name + ":" + "living");
-                    writer.beginObject();
-                    writer.name("category").value("hostile");
-                    writer.name("sounds").beginArray();
-                    for (String dir1 : dirs)
+                    if (dir1.contains(name) && dir1.toLowerCase().contains("living"))
                     {
-                        if (dir1.contains(name) && dir1.toLowerCase().contains("living"))
-                        {
-                            writer.value(dir1);
-                        }
+                        writer.value(dir1);
                     }
-                    writer.endArray();
-                    writer.endObject();
-                    lastLiving = name;
                 }
-                if (dir.toLowerCase().contains("hurt") && !name.equals(lastHurt))
+                writer.endArray();
+                writer.endObject();
+                lastLiving = name;
+            }
+            if (dir.toLowerCase().contains("hurt") && !name.equals(lastHurt))
+            {
+                writer.name(modid + ":" + name + ":" + "hurt");
+                writer.beginObject();
+                writer.name("category").value("hostile");
+                writer.name("sounds").beginArray();
+                for (String dir1 : dirs)
                 {
-                    writer.name(modid + ":" + name + ":" + "hurt");
-                    writer.beginObject();
-                    writer.name("category").value("hostile");
-                    writer.name("sounds").beginArray();
-                    for (String dir1 : dirs)
+                    if (dir1.contains(name) && dir1.toLowerCase().contains("hurt"))
                     {
-                        if (dir1.contains(name) && dir1.toLowerCase().contains("hurt"))
-                        {
-                            writer.value(dir1);
-                        }
+                        writer.value(dir1);
                     }
-                    writer.endArray();
-                    writer.endObject();
-                    lastHurt = name;
                 }
-                if (dir.toLowerCase().contains("death") && !name.equals(lastDeath))
+                writer.endArray();
+                writer.endObject();
+                lastHurt = name;
+            }
+            if (dir.toLowerCase().contains("death") && !name.equals(lastDeath))
+            {
+                writer.name(modid + ":" + name + ":" + "death");
+                writer.beginObject();
+                writer.name("category").value("hostile");
+                writer.name("sounds").beginArray();
+                for (String dir1 : dirs)
                 {
-                    writer.name(modid + ":" + name + ":" + "death");
-                    writer.beginObject();
-                    writer.name("category").value("hostile");
-                    writer.name("sounds").beginArray();
-                    for (String dir1 : dirs)
+                    if (dir1.contains(name) && dir1.toLowerCase().contains("death"))
                     {
-                        if (dir1.contains(name) && dir1.toLowerCase().contains("death"))
-                        {
-                            writer.value(dir1);
-                        }
+                        writer.value(dir1);
                     }
-                    writer.endArray();
-                    writer.endObject();
-                    lastDeath = name;
                 }
+                writer.endArray();
+                writer.endObject();
+                lastDeath = name;
+            }
                 writer.name(modid + ":" + dir.split("/")[2]);
                 writer.beginObject();
                 writer.name("category").value("hostile");
                 writer.name("sounds").beginArray();
-                for (String dir1 : dirs)
-                {
-                    if (dir1.equals(name))
-                    {
-                        writer.value(dir1);
-                    }
-                }
+                        writer.value(dir);
                 writer.endArray();
                 writer.endObject();
-            }
-            if (dir.split("/").length < 2)
-            {
-                name = dir.split("/")[0];
-                writer.name(modid + ":" + name);
-                writer.beginObject();
-                writer.name("category").value("hostile");
-                writer.name("sounds").beginArray();
-                for (String dir1 : dirs)
-                {
-                    if (dir1.contains(name))
-                    {
-                        writer.value(dir1);
-                    }
-                }
-                writer.endArray();
-                writer.endObject();
-            }
         }
         writer.endObject();
         writer.close();
