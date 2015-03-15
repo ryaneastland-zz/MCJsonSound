@@ -124,7 +124,7 @@ public class NewScan
             name = dir.split("/")[1];
             if (dir.toLowerCase().contains("living") && !name.equals(lastLiving))
             {
-                writer.name(modid + ":" + name + ":" + "living");
+                writer.name(name + ":" + "living");
                 writer.beginObject();
                 writer.name("category").value("hostile");
                 writer.name("sounds").beginArray();
@@ -141,7 +141,7 @@ public class NewScan
             }
             if (dir.toLowerCase().contains("hurt") && !name.equals(lastHurt))
             {
-                writer.name(modid + ":" + name + ":" + "hurt");
+                writer.name(name + ":" + "hurt");
                 writer.beginObject();
                 writer.name("category").value("hostile");
                 writer.name("sounds").beginArray();
@@ -158,7 +158,7 @@ public class NewScan
             }
             if (dir.toLowerCase().contains("death") && !name.equals(lastDeath))
             {
-                writer.name(modid + ":" + name + ":" + "death");
+                writer.name(name + ":" + "death");
                 writer.beginObject();
                 writer.name("category").value("hostile");
                 writer.name("sounds").beginArray();
@@ -173,13 +173,13 @@ public class NewScan
                 writer.endObject();
                 lastDeath = name;
             }
-                writer.name(modid + ":" + dir.split("/")[2]);
-                writer.beginObject();
-                writer.name("category").value("hostile");
-                writer.name("sounds").beginArray();
-                        writer.value(dir);
-                writer.endArray();
-                writer.endObject();
+            writer.name(dir.split("/")[2]);
+            writer.beginObject();
+            writer.name("category").value("hostile");
+            writer.name("sounds").beginArray();
+            writer.value(dir);
+            writer.endArray();
+            writer.endObject();
         }
         writer.endObject();
         writer.close();
